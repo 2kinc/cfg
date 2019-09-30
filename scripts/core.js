@@ -10,6 +10,14 @@
         candy;
     }
     class Factory {
+        constructor(_createBuildings) {
+            if (_createBuildings) {
+                this.importDepot = new ImportDepot();
+                this.productionBay = new ProductionBay();
+                this.storageBuilding = new StorageBuilding();
+                this.shippingDepot = new ShippingDepot();
+            }
+        }
         importDepot;
         productionBay;
         storageBuilding;
@@ -35,7 +43,8 @@
         productionRate = 1;
 
         static Defaults = {
-            
+            workerSpeed: 1,
+            productionRate: 30
         };
 
         static Tiers = {
@@ -46,7 +55,7 @@
         storageCapacity = 1;
 
         static Defaults = {
-            
+            storageCapacity: 500
         };
 
         static Tiers = {
@@ -59,7 +68,9 @@
         vehicleCapacity = 1;
 
         static Defaults = {
-            
+            workerSpeed: 1,
+            vehicleSpeed: 1,
+            vehicleCapacity: 35
         };
 
         static Tiers = {
@@ -67,5 +78,7 @@
         };
     }
 
-    console.log(new Player('d'));
+    var factory = new Factory(true);
+    var player = new Player('e', factory);
+    console.log(player);
 })(this);
