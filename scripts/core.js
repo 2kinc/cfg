@@ -1,5 +1,5 @@
 (function (global) {
-    global.Player = class Player {
+    global.CFG.classes.Player = class Player {
         constructor(_name, _factory) {
             this.name = _name;
             this.factory = _factory;
@@ -79,9 +79,24 @@
     }
 
     var factory = new Factory(true);
-    var player = new Player('e', factory);
+    var player = new global.CFG.classes.Player('e', factory);
     console.log(player);
 
-    global.Graphics.init();
-    global.Player.Create3D(player);
+    global.CFG.packages.graphics.init();
+    global.CFG.packages.events.init();
+    global.CFG.classes.Player.Create3D(player);
+    
+    var handler = new global.CFG.classes.InputHandler(global);
+    handler.onWheel = function (e) {
+        global.CFG.packages.graphics.fov += e.direction;
+
+        if (global.CFG.packages.graphics.fov < 3)
+            global.CFG.packages.graphics.fov = 3;
+
+        if (global.CFG.packages.graphics.fov > 30)
+            global.CFG.packages.graphics.fov = 30;
+
+        global.CFG.packages.graphics.updateCamera();
+    }
+    handler.start();
 })(this);
