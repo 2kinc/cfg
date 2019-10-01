@@ -9,6 +9,8 @@
     var geometry = new THREE.BoxGeometry(1, 1, 1);
     var material = new THREE.MeshLambertMaterial({ color: 0x4444ff });
     var cube = new THREE.Mesh(geometry, material);
+    cube.rotation.x = 0.8;
+    cube.rotation.y = 0.8;
     scene.add(cube);
 
     var planeGeometry = new THREE.PlaneGeometry(100, 100);
