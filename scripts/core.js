@@ -81,5 +81,7 @@
     var factory = new Factory(true);
     var player = new Player('e', factory);
     console.log(player);
+
+    global.Graphics.init();
     global.Player.Create3D(player);
 })(this);
