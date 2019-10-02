@@ -1,6 +1,9 @@
 (function (global) {
     global.CFG.packages.graphics = {
-        fov: 15
+        fov: 15,
+        minfov: 3,
+        maxfov: 22,
+        zoomSpeed: 2
     };
     global.CFG.packages.graphics.init = function () {
         var scene = new THREE.Scene();
@@ -23,6 +26,8 @@
 
         var renderer = new THREE.WebGLRenderer()
         renderer.setSize(global.innerWidth, global.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         document.body.appendChild(renderer.domElement);
 
         var geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -30,45 +35,59 @@
         var cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
 
-        var planeGeometry = new THREE.PlaneGeometry(1000, 1000);
-        var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x44ff44 });
+        var planeGeometry = new THREE.PlaneGeometry(180, 180);
+        var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x44ff44, side: THREE.DoubleSide });
         var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.position.set(0, 0, 0);
+        plane.rotation.x = Math.PI / 2;
+        plane.receiveShadow = true;
         scene.add(plane);
 
-        var light = new THREE.DirectionalLight(0xffffff, 1);
+        var light = new THREE.DirectionalLight(0xffffff, 0.4);
+        light.castShadow = true;
+
+        light.shadow.mapSize.width = 512;  // default
+        light.shadow.mapSize.height = 512; // default
+        light.shadow.camera.near = 0.5;    // default
+        light.shadow.camera.far = 500;     // default
+
         scene.add(light);
 
-        var ambientLight = new THREE.AmbientLight(0xffffff, 1);
+        var ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
         scene.add(ambientLight);
 
         global.CFG.classes.Player.Create3D = function (player) {
             var f = player.factory;
             if (f.importDepot) {
-                var g = new THREE.BoxGeometry(1, 2, 1);
+                var g = new THREE.BoxGeometry(1, 1, 2);
                 var m = new THREE.MeshLambertMaterial({ color: 0xffffff });
                 var o = new THREE.Mesh(g, m);
                 o.position.set(-5, 0, 0);
+                o.castShadow = true;
                 scene.add(o);
             }
             if (f.productionBay) {
-                var g = new THREE.BoxGeometry(3, 5, 1.5);
+                var g = new THREE.BoxGeometry(3, 1.5, 5);
                 var m = new THREE.MeshLambertMaterial({ color: 0xaaaaff });
                 var o = new THREE.Mesh(g, m);
                 o.position.set(-3, 0, 0);
+                o.castShadow = true;
                 scene.add(o);
             }
             if (f.storageBuilding) {
-                var g = new THREE.BoxGeometry(3, 3, 2);
+                var g = new THREE.BoxGeometry(3, 2, 3);
                 var m = new THREE.MeshLambertMaterial({ color: 0xaaffaa });
                 var o = new THREE.Mesh(g, m);
                 o.position.set(1, 0, 0);
+                o.castShadow = true;
                 scene.add(o);
             }
             if (f.shippingDepot) {
-                var g = new THREE.BoxGeometry(1, 2, 1);
+                var g = new THREE.BoxGeometry(1, 1, 2);
                 var m = new THREE.MeshLambertMaterial({ color: 0xffffff });
                 var o = new THREE.Mesh(g, m);
                 o.position.set(5, 0, 0);
+                o.castShadow = true;
                 scene.add(o);
             }
         }

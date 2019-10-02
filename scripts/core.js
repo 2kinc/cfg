@@ -88,13 +88,13 @@
     
     var handler = new global.CFG.classes.InputHandler(global);
     handler.onWheel = function (e) {
-        global.CFG.packages.graphics.fov += e.direction;
+        global.CFG.packages.graphics.fov -= e.direction * global.CFG.packages.graphics.zoomSpeed;
 
-        if (global.CFG.packages.graphics.fov < 3)
-            global.CFG.packages.graphics.fov = 3;
+        if (global.CFG.packages.graphics.fov < global.CFG.packages.graphics.minfov)
+            global.CFG.packages.graphics.fov = global.CFG.packages.graphics.minfov;
 
-        if (global.CFG.packages.graphics.fov > 30)
-            global.CFG.packages.graphics.fov = 30;
+        if (global.CFG.packages.graphics.fov > global.CFG.packages.graphics.maxfov)
+            global.CFG.packages.graphics.fov = global.CFG.packages.graphics.maxfov;
 
         global.CFG.packages.graphics.updateCamera();
     }
