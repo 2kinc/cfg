@@ -24,7 +24,7 @@
             camera.updateProjectionMatrix();
         }
 
-        var renderer = new THREE.WebGLRenderer()
+        var renderer = new THREE.WebGLRenderer({ antialias: true })
         renderer.setSize(global.innerWidth, global.innerHeight);
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -43,7 +43,8 @@
         plane.receiveShadow = true;
         scene.add(plane);
 
-        var light = new THREE.DirectionalLight(0xffffff, 0.4);
+        var light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(-10, 5, 5);
         light.castShadow = true;
 
         light.shadow.mapSize.width = 512;  // default
@@ -62,34 +63,44 @@
                 var g = new THREE.BoxGeometry(1, 1, 2);
                 var m = new THREE.MeshLambertMaterial({ color: 0xffffff });
                 var o = new THREE.Mesh(g, m);
-                o.position.set(-5, 0, 0);
+                o.position.set(-5, 0.5, 0);
                 o.castShadow = true;
+                o.receiveShadow = true;
                 scene.add(o);
             }
             if (f.productionBay) {
                 var g = new THREE.BoxGeometry(3, 1.5, 5);
                 var m = new THREE.MeshLambertMaterial({ color: 0xaaaaff });
                 var o = new THREE.Mesh(g, m);
-                o.position.set(-3, 0, 0);
+                o.position.set(-3, 0.75, 0);
                 o.castShadow = true;
+                o.receiveShadow = true;
                 scene.add(o);
             }
             if (f.storageBuilding) {
                 var g = new THREE.BoxGeometry(3, 2, 3);
                 var m = new THREE.MeshLambertMaterial({ color: 0xaaffaa });
                 var o = new THREE.Mesh(g, m);
-                o.position.set(1, 0, 0);
+                o.position.set(1, 1, 0);
                 o.castShadow = true;
+                o.receiveShadow = true;
                 scene.add(o);
             }
             if (f.shippingDepot) {
                 var g = new THREE.BoxGeometry(1, 1, 2);
                 var m = new THREE.MeshLambertMaterial({ color: 0xffffff });
                 var o = new THREE.Mesh(g, m);
-                o.position.set(5, 0, 0);
+                o.position.set(5, 0.5, 0);
                 o.castShadow = true;
+                o.receiveShadow = true;
                 scene.add(o);
             }
+            var roadGeometry = new THREE.BoxGeometry(20, 0.1, 1);
+            var roadMaterial = new THREE.MeshLambertMaterial({ color: 0x111111 });
+            var road = new THREE.Mesh(roadGeometry, roadMaterial);
+            road.receiveShadow = true;
+            road.position.set(0, 0.05, 5);
+            scene.add(road);
         }
 
         function animationFrame() {
