@@ -15,9 +15,9 @@ import {
 	TOUCH,
 	Vector2,
 	Vector3
-} from "/scripts/three.module.js";
+} from "./scripts/three.module.js";
 
-import {Graphics} from "/scripts/graphics.js";
+import {Graphics} from "./scripts/graphics.js";
 
 // This set of controls performs orbiting, dollying (zooming), and panning.
 // Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
