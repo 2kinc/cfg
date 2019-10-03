@@ -1,3 +1,17 @@
 {
-
+    "ImportDepot": {
+        "upgrades": [
+            [
+                {
+                    "name": "Energy Drinks",
+                    "upgrade": "WorkerSpeed",
+                    "multiplier": 1.20
+                },
+                {
+                    "name": ""
+                }
+            ]
+        ]
+    }
+    }
 }

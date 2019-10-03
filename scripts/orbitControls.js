@@ -15,7 +15,9 @@ import {
 	TOUCH,
 	Vector2,
 	Vector3
-} from "/scripts/three.js";
+} from "/scripts/three.module.js";
+
+import {Graphics} from "/scripts/graphics.js";
 
 // This set of controls performs orbiting, dollying (zooming), and panning.
 // Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
@@ -37,8 +39,8 @@ var OrbitControls = function ( object, domElement ) {
 	this.target = new Vector3();
 
 	// How far you can dolly in and out ( PerspectiveCamera only )
-	this.minDistance = 0;
-	this.maxDistance = Infinity;
+	this.minDistance = Graphics.minZoom;
+	this.maxDistance = Graphics.maxZoom;
 
 	// How far you can zoom in and out ( OrthographicCamera only )
 	this.minZoom = 0;

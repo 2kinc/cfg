@@ -3,30 +3,28 @@ import { OrbitControls } from "/scripts/OrbitControls.js";
 
 let Graphics = {
     fov: 15,
-    minfov: 3,
-    maxfov: 22,
-    zoomSpeed: 2
+    minZoom: 8,
+    maxZoom: 160,
+    zoomSpeed: 2,
+    skyColor: 0x00b0ff,
 };
 var scene = new THREE.Scene();
 
 var aspect = window.innerWidth / window.innerHeight;
-var d = Graphics.fov;
-var camera = new THREE.OrthographicCamera(- d * aspect, d * aspect, d, - d, 1, 1000);
+var camera = new THREE.PerspectiveCamera(Graphics.fov, aspect, 0.1, 1000);
 
 camera.position.set(20, 20, 20); // all components equal
 camera.lookAt(scene.position); // or the origin
 
 Graphics.updateCamera = function () {
-    var d = Graphics.fov;
     var aspect = window.innerWidth / window.innerHeight;
-    camera.left = - d * aspect;
-    camera.right = d * aspect;
-    camera.top = d;
-    camera.bottom = -d;
+    camera.fov = Graphics.fov;
+    camera.aspect = aspect;
     camera.updateProjectionMatrix();
 }
 
 var renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setClearColor(Graphics.skyColor);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
@@ -34,11 +32,6 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
 
 var controls = new OrbitControls(camera);
-
-var geometry = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshLambertMaterial({ color: 0x4444ff });
-var cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
 
 var planeGeometry = new THREE.PlaneGeometry(180, 180);
 var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x44ff44, side: THREE.DoubleSide });
