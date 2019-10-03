@@ -1,102 +1,106 @@
-(function (global) {
-    global.CFG.classes.Player = class Player {
-        constructor(_name, _factory) {
-            this.name = _name;
-            this.factory = _factory;
+import { Graphics } from "/scripts/graphics.js";
+import { InputHandler } from "/scripts/events.js";
+
+class Player {
+    constructor(_name, _factory) {
+        this.name = _name;
+        this.factory = _factory;
+    }
+    money = 0;
+    name = 'Guest';
+    factory;
+    candy;
+}
+class Factory {
+    constructor(_createBuildings) {
+        if (_createBuildings) {
+            this.importDepot = new ImportDepot();
+            this.productionBay = new ProductionBay();
+            this.storageBuilding = new StorageBuilding();
+            this.shippingDepot = new ShippingDepot();
         }
-        money = 0;
-        name = 'Guest';
-        factory;
-        candy;
     }
-    class Factory {
-        constructor(_createBuildings) {
-            if (_createBuildings) {
-                this.importDepot = new ImportDepot();
-                this.productionBay = new ProductionBay();
-                this.storageBuilding = new StorageBuilding();
-                this.shippingDepot = new ShippingDepot();
-            }
-        }
-        importDepot;
-        productionBay;
-        storageBuilding;
-        shippingDepot;
-    }
-    class ImportDepot {
-        workerSpeed = 1;
-        vehicleSpeed = 1;
-        vehicleCapacity = 1;
-        vehicleMaxCount = 0;
+    importDepot;
+    productionBay;
+    storageBuilding;
+    shippingDepot;
+}
+class ImportDepot {
+    workerSpeed = 1;
+    vehicleSpeed = 1;
+    vehicleCapacity = 1;
+    vehicleMaxCount = 0;
 
-        vehicles = [];
+    vehicles = [];
 
-        static Defaults = {
-            workerSpeed: 1,
-            vehicleSpeed: 5,
-            vehicleCapacity: 25,
-            vehicleMaxCount: 5
-        };
-    }
-    class ProductionBay {
-        workerSpeed = 1;
-        productionRate = 1;
+    static Defaults = {
+        workerSpeed: 1,
+        vehicleSpeed: 5,
+        vehicleCapacity: 25,
+        vehicleMaxCount: 5
+    };
+}
+class ProductionBay {
+    workerSpeed = 1;
+    productionRate = 1;
 
-        static Defaults = {
-            workerSpeed: 1,
-            productionRate: 30
-        };
+    static Defaults = {
+        workerSpeed: 1,
+        productionRate: 30
+    };
 
-        static Tiers = {
+    static Tiers = {
 
-        };
-    }
-    class StorageBuilding {
-        storageCapacity = 1;
+    };
+}
+class StorageBuilding {
+    storageCapacity = 1;
 
-        static Defaults = {
-            storageCapacity: 500
-        };
+    static Defaults = {
+        storageCapacity: 500
+    };
 
-        static Tiers = {
+    static Tiers = {
 
-        };
-    }
-    class ShippingDepot {
-        workerSpeed = 1;
-        vehicleSpeed = 1;
-        vehicleCapacity = 1;
+    };
+}
+class ShippingDepot {
+    workerSpeed = 1;
+    vehicleSpeed = 1;
+    vehicleCapacity = 1;
 
-        static Defaults = {
-            workerSpeed: 1,
-            vehicleSpeed: 1,
-            vehicleCapacity: 35
-        };
+    static Defaults = {
+        workerSpeed: 1,
+        vehicleSpeed: 1,
+        vehicleCapacity: 35
+    };
 
-        static Tiers = {
+    static Tiers = {
 
-        };
-    }
+    };
+}
+
+window.onload = function () {
 
     var factory = new Factory(true);
-    var player = new global.CFG.classes.Player('e', factory);
+    var player = new Player('e', factory);
     console.log(player);
 
-    global.CFG.packages.graphics.init();
-    global.CFG.packages.events.init();
-    global.CFG.classes.Player.Create3D(player);
-    
-    var handler = new global.CFG.classes.InputHandler(global);
+    Player.Create3D(player);
+
+    var handler = new InputHandler(window);
     handler.onWheel = function (e) {
-        global.CFG.packages.graphics.fov -= e.direction * global.CFG.packages.graphics.zoomSpeed;
+        Graphics.fov -= e.direction * Graphics.zoomSpeed;
 
-        if (global.CFG.packages.graphics.fov < global.CFG.packages.graphics.minfov)
-            global.CFG.packages.graphics.fov = global.CFG.packages.graphics.minfov;
+        if (Graphics.fov < Graphics.minfov)
+            Graphics.fov = Graphics.minfov;
 
-        if (global.CFG.packages.graphics.fov > global.CFG.packages.graphics.maxfov)
-            global.CFG.packages.graphics.fov = global.CFG.packages.graphics.maxfov;
+        if (Graphics.fov > Graphics.maxfov)
+            Graphics.fov = Graphics.maxfov;
 
-        global.CFG.packages.graphics.updateCamera();
+        Graphics.updateCamera();
     }
     handler.start();
-})(this);
+}
+
+export { Player };
