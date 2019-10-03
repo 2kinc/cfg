@@ -1,6 +1,6 @@
-import { Graphics } from "./scripts/graphics.js";
-import { InputHandler } from "./scripts/events.js";
-import { Factory, ImportDepot, ProductionBay, StorageBuilding, ShippingDepot } from "./scripts/factory.js"
+import { Graphics } from "../scripts/graphics.js";
+import { InputHandler } from "../scripts/events.js";
+import { Factory, ImportDepot, ProductionBay, StorageBuilding, ShippingDepot } from "../scripts/factory.js"
 
 class Player {
     constructor(_name, _factory) {
