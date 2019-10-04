@@ -29,10 +29,10 @@ window.onload = function () {
     //var handler = new InputHandler(window);
     //handler.start();
     window.addEventListener('mousemove', function(e) {
-        if (e.clientY < 32 && !shown) {
+        if (e.clientY > window.innerHeight - 32 && !shown) {
             var shown = true;
             document.querySelector('#topbar').classList.add('shown');
-        } else if (e.clientY > 64) {
+        } else if (e.clientY < window.innerHeight - 64) {
             var shown = false;
             document.querySelector('#topbar').classList.remove('shown');
         }

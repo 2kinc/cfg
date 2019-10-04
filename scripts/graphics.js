@@ -59,9 +59,9 @@ var light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(-10, 5, 5);
 light.castShadow = true;
 
-light.shadow.mapSize.width = 512;  // default
-light.shadow.mapSize.height = 512; // default
-light.shadow.camera.near = 0.5;    // default
+light.shadow.mapSize.width = 1024;
+light.shadow.mapSize.height = 1024;
+light.shadow.camera.near = 0.000025;    // default
 light.shadow.camera.far = 500;     // default
 
 scene.add(light);
