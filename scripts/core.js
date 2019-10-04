@@ -3,37 +3,28 @@ import { InputHandler } from "/scripts/events.js";
 import { Factory, ImportDepot, ProductionBay, StorageBuilding, ShippingDepot } from "/scripts/factory.js"
 
 class Player {
-    constructor(_name, _factory) {
+    constructor(_name, _type, _factory) {
         this.name = _name;
+        this.type = _type;
         this.factory = _factory;
     }
     money = 0;
     name = 'Guest';
+    type;
     factory;
     candy;
 }
 
-
+// Start everything up
 window.onload = function () {
 
     var factory = new Factory(true);
-    var player = new Player('e', factory);
+    var player = new Player('e', 'Candy Corn', factory);
     console.log(player);
 
     Player.Create3D(player);
 
     var handler = new InputHandler(window);
-    /*handler.onWheel = function (e) {
-        Graphics.fov -= e.direction * Graphics.zoomSpeed;
-
-        if (Graphics.fov < Graphics.minfov)
-            Graphics.fov = Graphics.minfov;
-
-        if (Graphics.fov > Graphics.maxfov)
-            Graphics.fov = Graphics.maxfov;
-
-        Graphics.updateCamera();
-    }*/
     handler.start();
 }
 

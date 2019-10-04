@@ -25,7 +25,6 @@ import {Graphics} from "/scripts/graphics.js";
 //    Orbit - left mouse / touch: one-finger move
 //    Zoom - middle mouse, or mousewheel / touch: two-finger spread or squish
 //    Pan - right mouse, or left mouse + ctrl/meta/shiftKey, or arrow keys / touch: two-finger move
-
 var OrbitControls = function ( object, domElement ) {
 
 	this.object = object;
@@ -49,22 +48,22 @@ var OrbitControls = function ( object, domElement ) {
 	// How far you can orbit vertically, upper and lower limits.
 	// Range is 0 to Math.PI radians.
 	this.minPolarAngle = 0; // radians
-	this.maxPolarAngle = Math.PI; // radians
+	this.maxPolarAngle = Math.PI / 2 - 0.1; // radians
 
 	// How far you can orbit horizontally, upper and lower limits.
 	// If set, must be a sub-interval of the interval [ - Math.PI, Math.PI ].
-	this.minAzimuthAngle = - Infinity; // radians
-	this.maxAzimuthAngle = Infinity; // radians
+	this.minAzimuthAngle = - Math.PI / 2; // radians
+	this.maxAzimuthAngle = Math.PI / 2; // radians
 
 	// Set to true to enable damping (inertia)
 	// If damping is enabled, you must call controls.update() in your animation loop
-	this.enableDamping = false;
-	this.dampingFactor = 0.05;
+	this.enableDamping = true;
+	this.dampingFactor = 0.125;
 
 	// This option actually enables dollying in and out; left as "zoom" for backwards compatibility.
 	// Set to false to disable zooming
 	this.enableZoom = true;
-	this.zoomSpeed = 1.0;
+	this.zoomSpeed = 2.0;
 
 	// Set to false to disable rotating
 	this.enableRotate = true;
