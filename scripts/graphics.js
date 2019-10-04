@@ -1,5 +1,5 @@
 import { Player } from "../scripts/core.js";
-import { OrbitControls } from "../scripts/OrbitControls.js";
+import { OrbitControls } from "../scripts/orbitControls.js";
 
 let Graphics = {
     fov: 15,
