@@ -8,3 +8,16 @@ body {
     overflow: hidden;
     touch-action: none;
 }
+
+#topbar {
+    position:fixed;
+    top:-100%;
+    width:100%;
+    left:0;
+    transition: 300ms ease;
+    background:#3f51b5;
+    height:64px;
+}
+.shown {
+    top:0!important;
+}

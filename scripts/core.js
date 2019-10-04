@@ -15,6 +15,8 @@ class Player {
     candy;
 }
 
+var shown = false; // for topbar
+
 // Start everything up
 window.onload = function () {
 
@@ -24,8 +26,19 @@ window.onload = function () {
 
     Player.Create3D(player);
 
-    var handler = new InputHandler(window);
-    handler.start();
+    //var handler = new InputHandler(window);
+    //handler.start();
+    window.addEventListener('mousemove', function(e) {
+        if (e.clientY < 32 && !shown) {
+            var shown = true;
+            document.querySelector('#topbar').classList.add('shown');
+        } else if (e.clientY > 64) {
+            var shown = false;
+            document.querySelector('#topbar').classList.remove('shown');
+        }
+    });
 }
+
+
 
 export { Player };
