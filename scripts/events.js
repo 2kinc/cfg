@@ -5,6 +5,7 @@ class InputHandler {
     }
     win = window;
     keyboard = {}
+    lastMousePos;
     onWheel = function (e) { }
     onMouseMove = function (e) { };
     start = function () {
@@ -13,7 +14,16 @@ class InputHandler {
             e.direction = e.wheelDelta > 0 ? 1 : -1;
             that.onWheel(e);
         });
-        this.win.addEventListener('mousemove', e => this.onMouseMove(e));
+        this.win.addEventListener('mousemove', function (e) {
+            if (that.lastMousePos) {
+                var diff = { x: e.clientX - lastMousePos.x, y: e.clientY - lastMousePos.y };
+                var magnitude = Math.sqrt(diff.x * diff.x + diff.y * diff.y + diff.z + diff.z);
+                var normalized = { x: diff.x / magnitude, y: diff.y / magnitude };
+                e.lastMousePos = that.lastMousePos;
+                e.diff = normalized;
+            }
+            that.onMouseMove(e);
+        });
     }
 }
 

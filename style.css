@@ -8,6 +8,15 @@ canvas {
     height: 100%;
 }
 
+#ui {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
 body {
     margin: 0;
     overflow: hidden;
@@ -15,7 +24,7 @@ body {
     font-family:Metropolis;
 }
 
-#topbar {
+#bottomBar {
     position:fixed;
     bottom:-100%;
     width:100%;
@@ -26,6 +35,7 @@ body {
     padding:8px;
     color:white;
 }
-.shown {
+
+#bottomBar.shown {
     bottom:0!important;
 }

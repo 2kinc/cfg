@@ -1,6 +1,7 @@
 import { Graphics } from "../scripts/graphics.js";
 import { InputHandler } from "../scripts/events.js";
-import { Factory, ImportDepot, ProductionBay, StorageBuilding, ShippingDepot } from "../scripts/factory.js"
+import { Factory, ImportDepot, ProductionBay, StorageBuilding, ShippingDepot } from "../scripts/factory.js";
+import { UI } from "../scripts/ui.js";
 
 class Player {
     constructor(_name, _type, _factory) {
@@ -26,19 +27,22 @@ window.onload = function () {
 
     Player.Create3D(player);
 
-    //var handler = new InputHandler(window);
-    //handler.start();
-    window.addEventListener('mousemove', function(e) {
+    var handler = new InputHandler(window);
+    handler.onMouseMove = function (e) {
         if (e.clientY > window.innerHeight - 32 && !shown) {
             var shown = true;
-            document.querySelector('#topbar').classList.add('shown');
+            handler.UI.vue.$refs.bottomBar.classList.add('shown');
         } else if (e.clientY < window.innerHeight - 64) {
             var shown = false;
-            document.querySelector('#topbar').classList.remove('shown');
+            handler.UI.vue.$refs.bottomBar.classList.remove('shown');
         }
-    });
-}
+    };
 
+    var ui = new UI(player, "#ui", handler);
+    ui.activate();
+
+    window.player = player;
+}
 
 
 export { Player };
