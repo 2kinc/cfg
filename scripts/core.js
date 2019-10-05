@@ -31,10 +31,10 @@ window.onload = function () {
     handler.onMouseMove = function (e) {
         if (e.clientY > window.innerHeight - 32 && !shown) {
             var shown = true;
-            handler.UI.vue.$refs.bottomBar.classList.add('shown');
+            this.UI.vue.$refs.bottomBar.classList.add('shown');
         } else if (e.clientY < window.innerHeight - 64) {
             var shown = false;
-            handler.UI.vue.$refs.bottomBar.classList.remove('shown');
+            this.UI.vue.$refs.bottomBar.classList.remove('shown');
         }
     };
 
