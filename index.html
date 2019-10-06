@@ -12,7 +12,9 @@
 <body>
     <div id="ui" v-bind:class="{highQuality:highQuality}">
         <div id="leftBar" ref="leftBar">
-            <div class="leftBarItem accent">{{player.name}}</div>
+            <div class="leftBarItem accent">
+                <input v-model="player.name" class="customInput light" placeholder="Your Name">
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

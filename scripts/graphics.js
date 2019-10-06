@@ -31,7 +31,7 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
 
-var controls = new OrbitControls(camera);
+window.orbitControls = new OrbitControls(camera);
 
 var planeGeometry = new THREE.PlaneGeometry(180, 180);
 var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x44ff44, side: THREE.DoubleSide });
@@ -120,7 +120,7 @@ window.addEventListener('resize', onWindowResize, false);
 function animationFrame() {
     requestAnimationFrame(animationFrame);
 
-    controls.update();
+    window.orbitControls.update();
 
     renderer.render(scene, camera);
 }

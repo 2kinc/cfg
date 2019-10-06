@@ -20,12 +20,14 @@ window.onload = function () {
 
     //open bottom bar
     handler.onMouseMove = function (e) {
-        if (e.clientX < 64 && !shown) {
+        if (e.clientX < 100 && !shown) {
             var shown = true;
             this.UI.vue.$refs.leftBar.classList.add('shown');
-        } else if (e.clientX > 128) {
+            window.orbitControls.enabled = false;
+        } else if (e.clientX > 160) {
             var shown = false;
             this.UI.vue.$refs.leftBar.classList.remove('shown');
+            window.orbitControls.enabled = true;
         }
     };
 

@@ -1,7 +1,7 @@
 @font-face {
-    font-family: Metropolis;
-    src: url(Metropolis-Regular.otf);
-  }
+    font-family: 'Turret Road';
+    src: url(fonts/TurretRoad-Medium.ttf);
+}
 
 canvas {
     width: 100%;
@@ -21,21 +21,24 @@ body {
     margin: 0;
     overflow: hidden;
     touch-action: none;
-    font-family:Metropolis;
+    font-family: 'Turret Road', monospace;
 }
 
 #leftBar {
-    position:fixed;
-    left:-100%;
-    height:100vh;
-    width: 128px;
-    transition: 300ms ease;
-    padding:8px;
+    position: fixed;
+    left: -100%;
+    height: 100vh;
+    width: 160px;
+    transition: 350ms ease;
+    padding: 12px;
 }
 
 #ui.highQuality #leftBar .leftBarItem {
     backdrop-filter: blur(3px);
     background: #ffffff99;
+    -webkit-box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
 }
 
 #ui.highQuality #leftBar .leftBarItem.accent {
@@ -57,4 +60,27 @@ body {
 
 .leftBarItem.accent {
     background: #ff9100;
+}
+
+.customInput {
+    font-family: 'Turret Road', monospace;
+    background: transparent;
+    border-radius: 6px;
+    border: none;
+    outline: none !important;
+    min-width: 0px;
+    padding: 6px;
+    margin: -6px;
+}
+
+.customInput:hover {
+    background: #00000033;
+}
+
+.customInput.light::placeholder {
+    color: #00000099;
+}
+
+.customInput.dark::placeholder {
+    color: #ffffff99;
 }
