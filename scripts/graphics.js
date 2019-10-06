@@ -1,4 +1,4 @@
-import { Player } from "../scripts/core.js";
+import { Player } from "../scripts/player.js";
 import { OrbitControls } from "../scripts/orbitControls.js";
 
 let Graphics = {

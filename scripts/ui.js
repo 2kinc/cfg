@@ -4,12 +4,14 @@ class UI {
         this.el = _el;
         this.inputHandler = _inputHandler;
     }
+    vue;
     activate = function () {
         var that = this;
         this.vue = new Vue({
             el: that.el,
             data: () => ({
-                player: that.player
+                player: that.player,
+                highQuality: true
             })
         });
         this.inputHandler.UI = this;

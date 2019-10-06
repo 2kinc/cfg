@@ -10,16 +10,15 @@
 </head>
 
 <body>
-    <div id="ui">
-        <div id="bottomBar" ref="bottomBar">{{player.name}}</div>
+    <div id="ui" v-bind:class="{highQuality:highQuality}">
+        <div id="leftBar" ref="leftBar">
+            <div class="leftBarItem accent">{{player.name}}</div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./scripts/three.min.js"></script>
     <script src="./scripts/three.module.js" type="module"></script>
     <script src="./scripts/graphics.js" type="module"></script>
-    <script src="./scripts/orbitControls.js" type="module"></script>
-    <script src="./scripts/events.js" type="module"></script>
-    <script src="./scripts/ui.js" type="module"></script>
     <script src="./scripts/core.js" type="module"></script>
 </body>
 

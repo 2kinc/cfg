@@ -4,10 +4,13 @@ class InputHandler {
         this.win = _window;
     }
     win = window;
-    keyboard = {}
+    keyboard = {keys:{}};
     lastMousePos;
     onWheel = function (e) { }
     onMouseMove = function (e) { };
+    onKeyDown = function (e) { };
+    onKeyUp = function (e) { };
+    onKeyPress = function (e) { };
     start = function () {
         var that = this;
         this.win.addEventListener("wheel", function (e) {
@@ -24,6 +27,15 @@ class InputHandler {
             }
             that.onMouseMove(e);
         });
+        this.win.addEventListener('keydown', function (e) {
+            that.keyboard.keys[e.key.toLowerCase()] = true;
+            that.onKeyDown(e);
+        });
+        this.win.addEventListener('keyup', function (e) {
+            that.keyboard.keys[e.key.toLowerCase()] = false;
+            that.onKeyUp(e);
+        });
+        this.win.addEventListener('keypress', this.onKeyPress);
     }
 }
 

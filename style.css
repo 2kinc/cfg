@@ -24,18 +24,37 @@ body {
     font-family:Metropolis;
 }
 
-#bottomBar {
+#leftBar {
     position:fixed;
-    bottom:-100%;
-    width:100%;
-    left:0;
+    left:-100%;
+    height:100vh;
+    width: 128px;
     transition: 300ms ease;
-    background:#03a9f4;
-    height:64px;
     padding:8px;
-    color:white;
 }
 
-#bottomBar.shown {
-    bottom:0!important;
+#ui.highQuality #leftBar .leftBarItem {
+    backdrop-filter: blur(3px);
+    background: #ffffff99;
+}
+
+#ui.highQuality #leftBar .leftBarItem.accent {
+    background: #ff9100cc;
+    backdrop-filter: blur(3px);
+}
+
+#leftBar.shown {
+    left: 0!important;
+}
+
+.leftBarItem {
+    background: white;
+    color: black;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px black solid;
+}
+
+.leftBarItem.accent {
+    background: #ff9100;
 }
