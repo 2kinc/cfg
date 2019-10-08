@@ -11,6 +11,9 @@
 
 <body>
     <div id="ui" v-bind:class="{highQuality:highQuality}">
+        <div id="views">
+            <div id="menus" class="viewBox"></div>
+        </div>
         <div id="leftBar" ref="leftBar">
             <div class="leftBarItem accent">
                 <input v-model="player.name" class="customInput light" placeholder="Your Name">
@@ -19,8 +22,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./scripts/three.min.js"></script>
-    <script src="./scripts/three.module.js" type="module"></script>
-    <script src="./scripts/graphics.js" type="module"></script>
+    <script src="./scripts/postprocessing.min.js"></script>
     <script src="./scripts/core.js" type="module"></script>
 </body>
 

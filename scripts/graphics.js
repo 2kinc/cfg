@@ -10,14 +10,22 @@ let Graphics = {
 };
 var scene = new THREE.Scene();
 
-var aspect = window.innerWidth / window.innerHeight;
+var aspect;
+if (window.innerWidth >= 900)
+    aspect = (window.innerWidth - 220) / (window.innerHeight - 60);
+else
+    aspect = (window.innerWidth - 60) / (window.innerHeight - 100);
 var camera = new THREE.PerspectiveCamera(Graphics.fov, aspect, 0.1, 1000);
 
 camera.position.set(20, 20, 20); // all components equal
 camera.lookAt(scene.position); // or the origin
 
 Graphics.updateCamera = function () {
-    var aspect = window.innerWidth / window.innerHeight;
+    var aspect;
+    if (window.innerWidth >= 900)
+        aspect = (window.innerWidth - 220) / (window.innerHeight - 60);
+    else
+        aspect = (window.innerWidth - 60) / (window.innerHeight - 100);
     camera.fov = Graphics.fov;
     camera.aspect = aspect;
     camera.updateProjectionMatrix();
@@ -26,10 +34,24 @@ Graphics.updateCamera = function () {
 var renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setClearColor(Graphics.skyColor);
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
+if (window.innerWidth >= 900)
+    renderer.setSize(window.innerWidth - 220, window.innerHeight - 60);
+else
+    renderer.setSize(window.innerWidth - 60, window.innerHeight - 100);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
+console.log(renderer);
+
+var composer = new POSTPROCESSING.EffectComposer(renderer);
+composer.addPass(new POSTPROCESSING.RenderPass(scene, camera));
+
+/*const effectPass = new POSTPROCESSING.EffectPass(
+    camera,
+    new POSTPROCESSING.BloomEffect()
+);
+effectPass.renderToScreen = true;
+composer.addPass(effectPass);*/
 
 window.orbitControls = new OrbitControls(camera);
 
@@ -69,6 +91,15 @@ scene.add(light);
 var ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
 scene.add(ambientLight);
 
+function animationFrame() {
+
+    window.orbitControls.update();
+
+    composer.render();
+
+    requestAnimationFrame(animationFrame);
+}
+
 Player.Create3D = function (player) {
     var f = player.factory;
     if (f.importDepot) {
@@ -107,24 +138,19 @@ Player.Create3D = function (player) {
         o.receiveShadow = true;
         scene.add(o);
     }
+
+    animationFrame();
 }
 
 function onWindowResize() {
     Graphics.updateCamera();
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    if (window.innerWidth >= 900)
+        renderer.setSize(window.innerWidth - 220, window.innerHeight - 60);
+    else
+        renderer.setSize(window.innerWidth - 60, window.innerHeight - 100);
 }
 
 window.addEventListener('resize', onWindowResize, false);
-
-function animationFrame() {
-    requestAnimationFrame(animationFrame);
-
-    window.orbitControls.update();
-
-    renderer.render(scene, camera);
-}
-
-animationFrame();
 
 export { Graphics };

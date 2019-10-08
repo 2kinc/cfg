@@ -14,8 +14,6 @@ window.onload = function () {
     var player = new Player('e', 'Candy Corn', factory);
     console.log(player);
 
-    Player.Create3D(player);
-
     var handler = new InputHandler(window);
 
     //open bottom bar
@@ -42,5 +40,8 @@ window.onload = function () {
     var ui = new UI(player, "#ui", handler);
     ui.activate();
 
+
     window.player = player;
+
+    Player.Create3D(player);
 }
