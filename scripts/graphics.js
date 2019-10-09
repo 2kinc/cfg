@@ -12,7 +12,7 @@ var scene = new THREE.Scene();
 
 var aspect;
 if (window.innerWidth >= 900)
-    aspect = (window.innerWidth - 220) / (window.innerHeight - 60);
+    aspect = (window.innerWidth - 260) / (window.innerHeight - 60);
 else
     aspect = (window.innerWidth - 60) / (window.innerHeight - 100);
 var camera = new THREE.PerspectiveCamera(Graphics.fov, aspect, 0.1, 1000);
@@ -23,7 +23,7 @@ camera.lookAt(scene.position); // or the origin
 Graphics.updateCamera = function () {
     var aspect;
     if (window.innerWidth >= 900)
-        aspect = (window.innerWidth - 220) / (window.innerHeight - 60);
+        aspect = (window.innerWidth - 260) / (window.innerHeight - 60);
     else
         aspect = (window.innerWidth - 60) / (window.innerHeight - 100);
     camera.fov = Graphics.fov;
@@ -35,7 +35,7 @@ var renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setClearColor(Graphics.skyColor);
 renderer.setPixelRatio(window.devicePixelRatio);
 if (window.innerWidth >= 900)
-    renderer.setSize(window.innerWidth - 220, window.innerHeight - 60);
+    renderer.setSize(window.innerWidth - 260, window.innerHeight - 60);
 else
     renderer.setSize(window.innerWidth - 60, window.innerHeight - 100);
 renderer.shadowMap.enabled = true;
@@ -46,14 +46,21 @@ document.body.appendChild(renderer.domElement);
 var composer = new POSTPROCESSING.EffectComposer(renderer);
 composer.addPass(new POSTPROCESSING.RenderPass(scene, camera));
 
+let areaImage = new Image();
+    areaImage.src = POSTPROCESSING.SMAAEffect.areaImageDataURL;
+let searchImage = new Image();
+    searchImage.src = POSTPROCESSING.SMAAEffect.searchImageDataURL;
+let smaaEffect = new POSTPROCESSING.SMAAEffect(searchImage,areaImage,1);
+
 const effectPass = new POSTPROCESSING.EffectPass(
     camera,
+    smaaEffect,
     new POSTPROCESSING.BloomEffect()
 );
 effectPass.renderToScreen = true;
 composer.addPass(effectPass);
 
-window.orbitControls = new OrbitControls(camera);
+window.orbitControls = new OrbitControls(camera, renderer.domElement);
 
 var planeGeometry = new THREE.PlaneGeometry(180, 180);
 var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x44ff44, side: THREE.DoubleSide });
@@ -146,7 +153,7 @@ function onWindowResize() {
     Graphics.updateCamera();
 
     if (window.innerWidth >= 900)
-        renderer.setSize(window.innerWidth - 220, window.innerHeight - 60);
+        renderer.setSize(window.innerWidth - 260, window.innerHeight - 60);
     else
         renderer.setSize(window.innerWidth - 60, window.innerHeight - 100);
 }

@@ -11,7 +11,7 @@ canvas {
     position: absolute;
     border: 1px white solid;
     border-radius: 8px;
-    transition: left 300ms;
+    transition: left 300ms, width 300ms, height 300ms;
 }
 
 body {
@@ -24,7 +24,7 @@ body {
 
 @media only screen and (min-width: 900px) {
     .viewBox {
-        width: calc(100vw - 220px);
+        width: calc(100vw - 260px);
         height: calc(100vh - 60px);
         border: 1px white solid;
         border-radius: 8px;
@@ -43,25 +43,21 @@ body {
         position: absolute;
         right: 30px;
         top: 30px;
+        width: 160px;
+        height: calc(100vh - 60px);
     }
 }
 
 #navItems {
     transition: 350ms ease;
-    padding: 12px;
 }
 
-#ui.highQuality #navItems .navItemsItem {
+.navItemsItem {
     backdrop-filter: blur(3px);
     background: #ffffff99;
     -webkit-box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
-}
-
-#ui.highQuality #navItems .navItemsItem.accent {
-    background: #ff9100cc;
-    backdrop-filter: blur(3px);
 }
 
 #navItems.shown {
@@ -78,6 +74,16 @@ body {
 
 .navItemsItem.accent {
     background: #ff9100;
+    color: white !important;
+    border-color: white;
+}
+
+.navItemsItem.accent input {
+    color: white;
+}
+
+.navItemsItem.accent input::placeholder {
+    color: #ffffff99;
 }
 
 .customInput {
