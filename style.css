@@ -4,17 +4,14 @@
 }
 
 #ui {
-    z-index: 2;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
+    
 }
 
 canvas {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    border: 1px white solid;
+    border-radius: 8px;
+    transition: left 300ms;
 }
 
 body {
@@ -28,25 +25,33 @@ body {
 @media only screen and (min-width: 900px) {
     .viewBox {
         width: calc(100vw - 220px);
-        height: 100vh;
+        height: calc(100vh - 60px);
         border: 1px white solid;
         border-radius: 8px;
         overflow: hidden;
         color: black;
         background: transparent;
+        position: absolute;
+        left: 30px;
+        top: 30px;
+    }
+    canvas {
+        left: 30px;
+        top: 30px;
+    }
+    #navItems {
+        position: absolute;
+        right: 30px;
+        top: 30px;
     }
 }
 
-#leftBar {
-    position: fixed;
-    left: -100%;
-    height: 100vh;
-    width: 160px;
+#navItems {
     transition: 350ms ease;
     padding: 12px;
 }
 
-#ui.highQuality #leftBar .leftBarItem {
+#ui.highQuality #navItems .navItemsItem {
     backdrop-filter: blur(3px);
     background: #ffffff99;
     -webkit-box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
@@ -54,16 +59,16 @@ body {
     box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
 }
 
-#ui.highQuality #leftBar .leftBarItem.accent {
+#ui.highQuality #navItems .navItemsItem.accent {
     background: #ff9100cc;
     backdrop-filter: blur(3px);
 }
 
-#leftBar.shown {
+#navItems.shown {
     left: 0!important;
 }
 
-.leftBarItem {
+.navItemsItem {
     background: white;
     color: black;
     padding: 12px;
@@ -71,7 +76,7 @@ body {
     border: 1px black solid;
 }
 
-.leftBarItem.accent {
+.navItemsItem.accent {
     background: #ff9100;
 }
 

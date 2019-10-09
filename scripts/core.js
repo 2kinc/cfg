@@ -20,11 +20,11 @@ window.onload = function () {
     handler.onMouseMove = function (e) {
         if (e.clientX < 100 && !shown) {
             var shown = true;
-            this.UI.vue.$refs.leftBar.classList.add('shown');
+            this.UI.vue.$refs.navItems.classList.add('shown');
             window.orbitControls.enabled = false;
         } else if (e.clientX > 160) {
             var shown = false;
-            this.UI.vue.$refs.leftBar.classList.remove('shown');
+            this.UI.vue.$refs.navItems.classList.remove('shown');
             window.orbitControls.enabled = true;
         }
     };

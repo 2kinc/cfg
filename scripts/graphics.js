@@ -40,18 +40,18 @@ else
     renderer.setSize(window.innerWidth - 60, window.innerHeight - 100);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
 document.body.appendChild(renderer.domElement);
-console.log(renderer);
 
 var composer = new POSTPROCESSING.EffectComposer(renderer);
 composer.addPass(new POSTPROCESSING.RenderPass(scene, camera));
 
-/*const effectPass = new POSTPROCESSING.EffectPass(
+const effectPass = new POSTPROCESSING.EffectPass(
     camera,
     new POSTPROCESSING.BloomEffect()
 );
 effectPass.renderToScreen = true;
-composer.addPass(effectPass);*/
+composer.addPass(effectPass);
 
 window.orbitControls = new OrbitControls(camera);
 
@@ -92,12 +92,12 @@ var ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
 scene.add(ambientLight);
 
 function animationFrame() {
+    requestAnimationFrame(animationFrame);
 
     window.orbitControls.update();
 
     composer.render();
-
-    requestAnimationFrame(animationFrame);
+    //renderer.render(scene, camera);
 }
 
 Player.Create3D = function (player) {
