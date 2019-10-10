@@ -21,33 +21,14 @@ body {
     font-size: 14px;
 }
 
-@media only screen and (min-width: 900px) {
-    .viewBox {
-        width: calc(100vw - 260px);
-        height: calc(100vh - 60px);
-        border: 1px white solid;
-        border-radius: 8px;
-        overflow: hidden;
-        color: black;
-        background: transparent;
-        position: absolute;
-        left: 30px;
-        top: 30px;
-    }
-    #navItems {
-        position: absolute;
-        right: 30px;
-        top: 30px;
-        width: 160px;
-        height: calc(100vh - 60px);
-    }
-    .navItemsItem {
-        margin-bottom: 30px;
-    }
-}
-
 #navItems {
     transition: 350ms ease;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    top: unset;
+    right: unset;
+    height: 28px;
 }
 
 .navItemsItem .title {
@@ -64,6 +45,15 @@ body {
     padding: 12px;
     border-radius: 10px;
     border: 1px #ff9100 solid;
+    min-height: 28px;
+}
+
+.navItemsItem .content {
+    position: relative;
+    top: -6px;
+    font-weight: bold;
+    margin-left: 10px;
+    display: none;
 }
 
 .navItemsItem.accent {
@@ -101,4 +91,33 @@ body {
 
 .customInput.dark::placeholder {
     color: #ffffff99;
+}
+
+@media only screen and (min-width: 900px) {
+    .viewBox {
+        width: calc(100vw - 260px);
+        height: calc(100vh - 60px);
+        border: 1px white solid;
+        border-radius: 8px;
+        overflow: hidden;
+        color: black;
+        background: transparent;
+        position: absolute;
+        left: 30px;
+        top: 30px;
+    }
+    #navItems {
+        left: unset;
+        bottom: unset;
+        right: 30px;
+        top: 30px;
+        width: 160px;
+        height: calc(100vh - 60px);
+    }
+    .navItemsItem {
+        margin-bottom: 30px;
+    }
+    .navItemsItem .content {
+        display: inline;
+    }
 }
