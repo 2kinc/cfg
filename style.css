@@ -3,23 +3,22 @@
     src: url(fonts/TurretRoad-Medium.ttf);
 }
 
-#ui {
-    
-}
-
 canvas {
     position: absolute;
     border: 1px white solid;
     border-radius: 8px;
     transition: left 300ms, width 300ms, height 300ms;
+    left: 30px;
+    top: 30px;
 }
 
 body {
     overflow: hidden;
     touch-action: none;
     font-family: 'Turret Road', monospace;
-    background: black;
+    background: #111;
     margin: 30px;
+    font-size: 14px;
 }
 
 @media only screen and (min-width: 900px) {
@@ -35,10 +34,6 @@ body {
         left: 30px;
         top: 30px;
     }
-    canvas {
-        left: 30px;
-        top: 30px;
-    }
     #navItems {
         position: absolute;
         right: 30px;
@@ -46,18 +41,17 @@ body {
         width: 160px;
         height: calc(100vh - 60px);
     }
+    .navItemsItem {
+        margin-bottom: 30px;
+    }
 }
 
 #navItems {
     transition: 350ms ease;
 }
 
-.navItemsItem {
-    backdrop-filter: blur(3px);
-    background: #ffffff99;
-    -webkit-box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
+.navItemsItem .title {
+    font-size: 24px;
 }
 
 #navItems.shown {
@@ -69,7 +63,7 @@ body {
     color: black;
     padding: 12px;
     border-radius: 10px;
-    border: 1px black solid;
+    border: 1px #ff9100 solid;
 }
 
 .navItemsItem.accent {

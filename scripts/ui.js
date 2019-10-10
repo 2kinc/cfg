@@ -12,7 +12,12 @@ class UI {
             data: () => ({
                 player: that.player,
                 highQuality: true
-            })
+            }),
+            computed:{
+                formattedMoney: function () {
+                    return this.player.money.toFixed(2);
+                }
+            }
         });
         this.inputHandler.UI = this;
         this.inputHandler.start();

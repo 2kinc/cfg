@@ -16,9 +16,13 @@
         </div>
         <div id="navItems" ref="navItems">
             <div class="navItemsItem accent">
-                <input v-model="player.name" class="customInput light" placeholder="Your Name">
-                {{player.money}}
+                <span class="title">{{player.name}}</span> <br>
+                ${{formattedMoney}}
             </div>
+            <div class="navItemsItem"></div>
+            <div class="navItemsItem"></div>
+            <div class="navItemsItem"></div>
+            <div class="navItemsItem"></div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
