@@ -14,7 +14,7 @@ var aspect;
 if (window.innerWidth >= 900)
     aspect = (window.innerWidth - 250) / (window.innerHeight - 60);
 else
-    aspect = (window.innerWidth - 60) / (window.innerHeight - 100);
+    aspect = (window.innerWidth - 90) / (window.innerHeight - 144);
 var camera = new THREE.PerspectiveCamera(Graphics.fov, aspect, 0.1, 1000);
 
 camera.position.set(20, 20, 20); // all components equal
@@ -25,7 +25,7 @@ Graphics.updateCamera = function () {
     if (window.innerWidth >= 900)
         aspect = (window.innerWidth - 250) / (window.innerHeight - 60);
     else
-        aspect = (window.innerWidth - 60) / (window.innerHeight - 100);
+        aspect = (window.innerWidth - 90) / (window.innerHeight - 144);
     camera.fov = Graphics.fov;
     camera.aspect = aspect;
     camera.updateProjectionMatrix();
@@ -37,7 +37,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 if (window.innerWidth >= 900)
     renderer.setSize(window.innerWidth - 250, window.innerHeight - 60);
 else
-    renderer.setSize(window.innerWidth - 60, window.innerHeight - 100);
+    renderer.setSize(window.innerWidth - 90, window.innerHeight - 144);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -55,7 +55,8 @@ let smaaEffect = new POSTPROCESSING.SMAAEffect(searchImage,areaImage,1);
 const effectPass = new POSTPROCESSING.EffectPass(
     camera,
     smaaEffect,
-    new POSTPROCESSING.BloomEffect()
+    new POSTPROCESSING.BloomEffect(),
+    new POSTPROCESSING.VignetteEffect()
 );
 effectPass.renderToScreen = true;
 composer.addPass(effectPass);
@@ -155,7 +156,7 @@ function onWindowResize() {
     if (window.innerWidth >= 900)
         renderer.setSize(window.innerWidth - 250, window.innerHeight - 60);
     else
-        renderer.setSize(window.innerWidth - 60, window.innerHeight - 100);
+        renderer.setSize(window.innerWidth - 90, window.innerHeight - 144);
 }
 
 window.addEventListener('resize', onWindowResize, false);

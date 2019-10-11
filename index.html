@@ -17,17 +17,20 @@
             <div id="menus" class="viewBox"></div>
         </div>
         <div id="navItems" ref="navItems">
-            <div class="navItemsItem accent">
+            <div class="navItemsItem accent" style="float: left;">
                 <span class="title">{{player.name}}</span> <br>
                 ${{formattedMoney}}
             </div>
-            <div class="navItemsItem">
+            <div class="navItemsItem" style="float: left;">
                 <i class="material-icons">business_center</i>
                 <span class="content">Upgrades</span>
             </div>
-            <div class="navItemsItem"></div>
-            <div class="navItemsItem"></div>
-            <div class="navItemsItem"></div>
+            <div class="navItemsItem" style="float: left;">
+                <i class="material-icons">person_add</i>
+                <span class="content">Hire Workers</span>
+            </div>
+            <div class="navItemsItem" style="float: right;"></div>
+            <div class="navItemsItem" style="float: right;"></div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
