@@ -19,13 +19,11 @@ window.onload = function () {
             if (this.UI.vue.highQuality) this.UI.vue.highQuality = false;
             else this.UI.vue.highQuality = true;
         }
+        
     }
 
     var ui = new UI(player, "#ui", handler);
     ui.activate();
-
-
-    window.player = player;
 
     Player.Create3D(player);
 }

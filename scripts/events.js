@@ -16,7 +16,7 @@ class InputHandler {
         this.win.addEventListener("wheel", function (e) {
             e.direction = e.wheelDelta > 0 ? 1 : -1;
             that.onWheel(e);
-        });
+        }, false);
         this.win.addEventListener('mousemove', function (e) {
             if (that.lastMousePos) {
                 var diff = { x: e.clientX - lastMousePos.x, y: e.clientY - lastMousePos.y };
@@ -26,16 +26,16 @@ class InputHandler {
                 e.diff = normalized;
             }
             that.onMouseMove(e);
-        });
+        }, false);
         this.win.addEventListener('keydown', function (e) {
             that.keyboard.keys[e.key.toLowerCase()] = true;
             that.onKeyDown(e);
-        });
+        }, false);
         this.win.addEventListener('keyup', function (e) {
             that.keyboard.keys[e.key.toLowerCase()] = false;
             that.onKeyUp(e);
-        });
-        this.win.addEventListener('keypress', this.onKeyPress);
+        }, false);
+        this.win.addEventListener('keypress', this.onKeyPress, false);
     }
 }
 

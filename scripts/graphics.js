@@ -52,11 +52,14 @@ let searchImage = new Image();
     searchImage.src = POSTPROCESSING.SMAAEffect.searchImageDataURL;
 let smaaEffect = new POSTPROCESSING.SMAAEffect(searchImage,areaImage,1);
 
+var vignette = new POSTPROCESSING.VignetteEffect();
+vignette.uniforms.set('darkness', {value: 0.4});
+
 const effectPass = new POSTPROCESSING.EffectPass(
     camera,
     smaaEffect,
     new POSTPROCESSING.BloomEffect(),
-    new POSTPROCESSING.VignetteEffect()
+    vignette
 );
 effectPass.renderToScreen = true;
 composer.addPass(effectPass);

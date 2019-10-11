@@ -46,9 +46,17 @@ body {
     border-radius: 10px;
     border: 1px #ff9100 solid;
     min-height: 28px;
-    margin-right: 30px;
+    margin-right: 15px;
     min-width: 24px;
     user-select: none !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.navItemsItem:active {
+    background: #ff9100;
+    color: white !important;
+    border-color: white;
 }
 
 .navItemsItem .content {
@@ -63,6 +71,7 @@ body {
     background: #ff9100;
     color: white !important;
     border-color: white;
+    display: none;
 }
 
 .navItemsItem.accent input {
@@ -124,5 +133,8 @@ body {
     }
     .navItemsItem .content {
         display: inline;
+    }
+    .navItemsItem.accent {
+        display: block;
     }
 }
