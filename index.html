@@ -29,15 +29,15 @@
                 <i class="material-icons">business_center</i>
                 <span class="content">Upgrades</span>
             </div>
-            <div class="navItemsItem" style="float: left;">
+            <div v-on:click="openMenu(hireMenu)" class="navItemsItem" style="float: left;">
                 <i class="material-icons">person_add</i>
                 <span class="content">Hire Workers</span>
             </div>
-            <div class="navItemsItem" style="float: left;">
+            <div v-on:click="openMenu(shopMenu)" class="navItemsItem" style="float: left;">
                 <i class="material-icons">storefront</i>
                 <span class="content">Item Shop</span>
             </div>
-            <div class="navItemsItem" style="float: right;">
+            <div v-on:click="openMenu(settingsMenu)" class="navItemsItem" style="float: right;">
                 <i class="material-icons">settings</i>
                 <span class="content">Settings</span>
             </div>

@@ -3,6 +3,62 @@
     src: url(fonts/TurretRoad-Medium.ttf);
 }
 
+@-webkit-keyframes loading-anim {
+    0% {
+        background-position: 0% 82%
+    }
+
+    50% {
+        background-position: 100% 19%
+    }
+
+    100% {
+        background-position: 0% 82%
+    }
+}
+
+@-moz-keyframes loading-anim {
+    0% {
+        background-position: 0% 82%
+    }
+
+    50% {
+        background-position: 100% 19%
+    }
+
+    100% {
+        background-position: 0% 82%
+    }
+}
+
+@-o-keyframes loading-anim {
+    0% {
+        background-position: 0% 82%
+    }
+
+    50% {
+        background-position: 100% 19%
+    }
+
+    100% {
+        background-position: 0% 82%
+    }
+}
+
+@keyframes loading-anim {
+    0% {
+        background-position: 0% 82%
+    }
+
+    50% {
+        background-position: 100% 19%
+    }
+
+    100% {
+        background-position: 0% 82%
+    }
+}
+
 #graphics {
     position: absolute;
     border: 1px white solid;
@@ -14,6 +70,30 @@
 
 #graphics.open {
     left: 30px;
+    top: 30px;
+}
+
+#menus {
+    top: 30px;
+    left: 100vw;
+    transition: left 300ms, top 300ms, width 300ms, height 300ms;
+    background: #222;
+}
+
+#menus.open {
+    top: 30px;
+    left: 30px;
+}
+
+.viewBox {
+    width: calc(100vw - 60px);
+    height: calc(100vh - 144px);
+    border: 1px white solid;
+    border-radius: 8px;
+    overflow: hidden;
+    color: black;
+    background: transparent;
+    position: absolute;
 }
 
 body {
@@ -76,7 +156,6 @@ body {
     background: #ff9100;
     color: white !important;
     border-color: white;
-    display: none;
 }
 
 .navItemsItem.accent input {
@@ -113,7 +192,8 @@ body {
 #loading {
     width: 100vw;
     height: 100vh;
-    background: #111;
+    background: linear-gradient(124deg, #000, #444);
+    background-size: 1800% 1800%;
     position: absolute;
     left: 0;
     top: 0;
@@ -122,6 +202,7 @@ body {
     text-align: center;
     padding-top: 50vh;
     transition: opacity 800ms;
+    animation: loading-anim 20s ease infinite;
 }
 
 #loadingHeader {
@@ -133,12 +214,6 @@ body {
     .viewBox {
         width: calc(100vw - 250px);
         height: calc(100vh - 60px);
-        border: 1px white solid;
-        border-radius: 8px;
-        overflow: hidden;
-        color: black;
-        background: transparent;
-        position: absolute;
         left: 30px;
         top: 30px;
     }
@@ -147,6 +222,14 @@ body {
         top: 100vh;
     }
     #graphics.open {
+        left: 30px;
+        top: 30px;
+    }
+    #menus {
+        left: 30px;
+        top: -100vh;
+    }
+    #menus.open {
         left: 30px;
         top: 30px;
     }

@@ -44,6 +44,7 @@ else
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.domElement.id = 'graphics';
+renderer.domElement.classList.add('open');
 
 document.body.appendChild(renderer.domElement);
 
@@ -59,10 +60,12 @@ let smaaEffect = new POSTPROCESSING.SMAAEffect(searchImage,areaImage,1);
 var vignette = new POSTPROCESSING.VignetteEffect();
 vignette.uniforms.set('darkness', {value: 0.4});
 
+var bloomEffect = new POSTPROCESSING.BloomEffect();
+
 const effectPass = new POSTPROCESSING.EffectPass(
     camera,
     smaaEffect,
-    new POSTPROCESSING.BloomEffect(),
+    bloomEffect,
     vignette
 );
 effectPass.renderToScreen = true;
@@ -71,7 +74,7 @@ composer.addPass(effectPass);
 window.orbitControls = new OrbitControls(camera, renderer.domElement);
 
 var planeGeometry = new THREE.PlaneGeometry(180, 180);
-var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x44ff44, side: THREE.DoubleSide });
+var planeMaterial = new THREE.MeshLambertMaterial({ color: 0x11ee33, side: THREE.DoubleSide });
 var plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.position.set(0, 0, 0);
 plane.rotation.x = Math.PI / 2;
