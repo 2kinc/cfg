@@ -1,3 +1,6 @@
+var loadingText = document.querySelector('#loadingText');
+setTimeout(function () {loadingText.innerText = 'loading factory data'}, 0);
+
 class Factory {
     constructor(_createBuildings) {
         if (_createBuildings) {

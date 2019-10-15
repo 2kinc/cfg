@@ -1,3 +1,6 @@
+var loadingText = document.querySelector('#loadingText');
+setTimeout(function () {loadingText.innerText = 'loading graphics'}, 0);
+
 import { Player } from "../scripts/player.js";
 import { OrbitControls } from "../scripts/orbitControls.js";
 

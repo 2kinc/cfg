@@ -1,3 +1,6 @@
+var loadingText = document.querySelector('#loadingText');
+setTimeout(function () {loadingText.innerText = 'loading ui'}, 0);
+
 class UI {
     constructor(_player, _el, _inputHandler) {
         this.player = _player;

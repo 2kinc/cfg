@@ -1,4 +1,5 @@
-
+var loadingText = document.querySelector('#loadingText');
+setTimeout(function () {loadingText.innerText = 'loading input'}, 0);
 class InputHandler {
     constructor(_window) {
         this.win = _window;

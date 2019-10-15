@@ -1,11 +1,19 @@
-import { Graphics } from "../scripts/graphics.js";
-import { InputHandler } from "../scripts/events.js";
+var loadingText = document.querySelector('#loadingText');
+
 import { Factory, ImportDepot, ProductionBay, StorageBuilding, ShippingDepot } from "../scripts/factory.js";
+
+import { InputHandler } from "../scripts/events.js";
+
 import { UI } from "../scripts/ui.js";
+
+import { Graphics } from "../scripts/graphics.js";
+
 import { Player } from "../scripts/player.js";
 
 // Start everything up
 window.onload = function () {
+
+    loadingText.innerText = 'finalizing';
 
     var factory = new Factory(true);
     var player = new Player('e', 'Candy Corn', factory);
@@ -26,4 +34,6 @@ window.onload = function () {
     ui.activate();
 
     Player.Create3D(player);
+
+    document.querySelector('#loading').style.display = 'none';
 }
