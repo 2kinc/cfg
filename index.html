@@ -14,10 +14,18 @@
     <div id="ui" v-bind:class="{highQuality:highQuality}">
         <div id="views">
             <div id="menus" v-bind:class="{open:menu!=null}" class="viewBox">
-                <div class="menuView" v-if="menu == upgradesMenu">upgrades</div>
-                <div class="menuView" v-if="menu == hireMenu">hire</div>
-                <div class="menuView" v-if="menu == shopMenu">shop</div>
-                <div class="menuView" v-if="menu == settingsMenu">settings</div>
+                <div class="menuView" v-if="menu == upgradesMenu">
+                    <div class="menuViewHeader">Upgrades</div>
+                </div>
+                <div class="menuView" v-if="menu == hireMenu">
+                    <div class="menuViewHeader">Hire Workers</div>
+                </div>
+                <div class="menuView" v-if="menu == shopMenu">
+                    <div class="menuViewHeader">Item Shop</div>
+                </div>
+                <div class="menuView" v-if="menu == settingsMenu">
+                    <div class="menuViewHeader">Settings</div>
+                </div>
             </div>
         </div>
         <div id="navItems" ref="navItems">
