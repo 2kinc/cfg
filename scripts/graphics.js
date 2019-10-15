@@ -43,6 +43,7 @@ else
     renderer.setSize(window.innerWidth - 90, window.innerHeight - 144);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.domElement.id = 'graphics';
 
 document.body.appendChild(renderer.domElement);
 

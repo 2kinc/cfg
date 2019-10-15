@@ -35,5 +35,6 @@ window.onload = function () {
 
     Player.Create3D(player);
 
-    document.querySelector('#loading').style.display = 'none';
+    setTimeout(function () {document.querySelector('#loading').style.opacity = 0}, 100);
+    setTimeout(function () {document.querySelector('#loading').style.display = 'none';}, 900);
 }

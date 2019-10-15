@@ -13,14 +13,19 @@
 <body>
     <div id="ui" v-bind:class="{highQuality:highQuality}">
         <div id="views">
-            <div id="menus" class="viewBox"></div>
+            <div id="menus" v-bind:class="{open:menu!=null}" class="viewBox">
+                <div class="menuView" v-if="menu == upgradesMenu">upgrades</div>
+                <div class="menuView" v-if="menu == hireMenu">hire</div>
+                <div class="menuView" v-if="menu == shopMenu">shop</div>
+                <div class="menuView" v-if="menu == settingsMenu">settings</div>
+            </div>
         </div>
         <div id="navItems" ref="navItems">
-            <div class="navItemsItem accent" style="float: left;">
+            <div v-on:click="closeMenu" class="navItemsItem accent" style="float: left;">
                 <span class="title">{{player.name}}</span> <br>
                 ${{formattedMoney}}
             </div>
-            <div class="navItemsItem" style="float: left;">
+            <div v-on:click="openMenu(upgradesMenu)" class="navItemsItem" style="float: left;">
                 <i class="material-icons">business_center</i>
                 <span class="content">Upgrades</span>
             </div>

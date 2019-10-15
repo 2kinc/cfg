@@ -14,11 +14,26 @@ class UI {
             el: that.el,
             data: () => ({
                 player: that.player,
-                highQuality: true
+                highQuality: true,
+                menu: null,
+                upgradesMenu: 0,
+                hireMenu: 1,
+                shopMenu: 2,
+                settingsMenu: 3,
             }),
             computed:{
                 formattedMoney: function () {
                     return this.player.money.toFixed(2);
+                }
+            },
+            methods: {
+                openMenu: function (menu) {
+                    this.menu = menu;
+                    document.querySelector('#graphics').classList.remove('open');
+                },
+                closeMenu: function () {
+                    this.menu = null;
+                    document.querySelector('#graphics').classList.add('open');
                 }
             }
         });

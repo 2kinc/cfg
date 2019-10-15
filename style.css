@@ -3,13 +3,17 @@
     src: url(fonts/TurretRoad-Medium.ttf);
 }
 
-canvas {
+#graphics {
     position: absolute;
     border: 1px white solid;
     border-radius: 8px;
-    transition: left 300ms, width 300ms, height 300ms;
-    left: 30px;
+    transition: left 300ms, top 300ms, width 300ms, height 300ms;
+    left: -100vw;
     top: 30px;
+}
+
+#graphics.open {
+    left: 30px;
 }
 
 body {
@@ -51,6 +55,7 @@ body {
     user-select: none !important;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    transition: all 100ms;
 }
 
 .navItemsItem:active {
@@ -116,6 +121,7 @@ body {
     color: white;
     text-align: center;
     padding-top: 50vh;
+    transition: opacity 800ms;
 }
 
 #loadingHeader {
@@ -125,7 +131,7 @@ body {
 
 @media only screen and (min-width: 900px) {
     .viewBox {
-        width: calc(100vw - 260px);
+        width: calc(100vw - 250px);
         height: calc(100vh - 60px);
         border: 1px white solid;
         border-radius: 8px;
@@ -133,6 +139,14 @@ body {
         color: black;
         background: transparent;
         position: absolute;
+        left: 30px;
+        top: 30px;
+    }
+    #graphics {
+        left: 30px;
+        top: 100vh;
+    }
+    #graphics.open {
         left: 30px;
         top: 30px;
     }
