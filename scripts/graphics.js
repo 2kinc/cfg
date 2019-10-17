@@ -81,7 +81,7 @@ plane.rotation.x = Math.PI / 2;
 plane.receiveShadow = true;
 scene.add(plane);
 
-var rG = new THREE.BoxGeometry(40, 0.1, 1);
+/*var rG = new THREE.BoxGeometry(40, 0.1, 1);
 var rM = new THREE.MeshLambertMaterial({ color: 0x111111 });
 var road = new THREE.Mesh(rG, rM);
 road.receiveShadow = true;
@@ -93,7 +93,7 @@ var r1M = new THREE.MeshLambertMaterial({ color: 0x111111 });
 var road1 = new THREE.Mesh(r1G, r1M);
 road1.rotation.y = Math.PI / 2;
 road1.position.set(19.5, 0.05, 0);
-scene.add(road1);
+scene.add(road1);*/
 
 var light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(-10, 5, 5);

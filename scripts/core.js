@@ -6,6 +6,8 @@ import { InputHandler } from "../scripts/events.js";
 
 import { UI } from "../scripts/ui.js";
 
+import { Data } from "../scripts/data.js";
+
 import { Graphics } from "../scripts/graphics.js";
 
 import { Player } from "../scripts/player.js";
@@ -33,7 +35,14 @@ window.onload = function () {
     var ui = new UI(player, "#ui", handler);
     ui.activate();
 
+    Data.get(function (scope) {
+        ui.vue.upgrades = scope.Upgrades;
+    });
+
     Player.Create3D(player);
+
+    window.ui = ui;
+    window.Data = Data;
 
     setTimeout(function () { loadingText.innerText = 'all done' }, 0);
     setTimeout(function () { document.querySelector('#loading').style.opacity = 0 }, 400);

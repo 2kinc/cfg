@@ -20,6 +20,7 @@ class UI {
                 hireMenu: 1,
                 shopMenu: 2,
                 settingsMenu: 3,
+                upgrades: {}
             }),
             computed:{
                 formattedMoney: function () {
