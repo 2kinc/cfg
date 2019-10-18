@@ -5,8 +5,9 @@ var Data = {
         FileReader.readTextFile('./scripts/upgrades.json', function (text) {
             var data = JSON.parse(text);
             Data.Upgrades = data;
+            callback(Data);
         });
-        callback(Data);
+
     }
 };
 
