@@ -14,16 +14,28 @@
     <div id="ui" v-bind:class="{highQuality:highQuality}">
         <div id="views">
             <div id="menus" v-bind:class="{open:menu!=null}" class="viewBox">
-                <div class="menuView" v-if="menu == upgradesMenu">
+                <div class="menuView" v-bind:class="{open:menu == upgradesMenu}">
                     <div class="menuViewHeader">Upgrades</div>
+                    <div v-for="category in upgrades" class="upgradesBuilding">
+                        {{category.name}}
+                        <hr>
+                        <ul v-for="tier in category.tiers" class="upgradesBuildingTier">
+                            <b>Tier {{category.tiers.indexOf(tier) + 1}}</b>
+                            <ul>
+                                <li v-for="upgrade in tier">
+                                    {{upgrade.name}} {{upgrade.upgrade}} {{upgrade.multiplier}}
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
                 </div>
-                <div class="menuView" v-if="menu == hireMenu">
+                <div class="menuView" v-bind:class="{open:menu == hireMenu}">
                     <div class="menuViewHeader">Hire Workers</div>
                 </div>
-                <div class="menuView" v-if="menu == shopMenu">
+                <div class="menuView" v-bind:class="{open:menu == shopMenu}">
                     <div class="menuViewHeader">Item Shop</div>
                 </div>
-                <div class="menuView" v-if="menu == settingsMenu">
+                <div class="menuView" v-bind:class="{open:menu == settingsMenu}">
                     <div class="menuViewHeader">Settings</div>
                 </div>
             </div>

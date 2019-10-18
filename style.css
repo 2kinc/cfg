@@ -83,10 +83,26 @@
     text-align: center;
 }
 
+.menuView {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+}
+
+.menuView.open {
+    opacity: 1;
+    pointer-events: initial;
+}
+
 #menus {
     top: 30px;
     left: 100vw;
     transition: left 300ms, top 300ms, width 300ms, height 300ms;
+    transition-timing-function: ease;
     background: #eee;
 }
 
@@ -218,6 +234,32 @@ body {
 #loadingHeader {
     font-size: 120%;
     margin-bottom: 3px;
+}
+
+.upgradesBuilding {
+    border-radius: 6px;
+    background: #ddd;
+    margin: 30px;
+    padding: 16px;
+}
+
+hr {
+    border: 0.5px #999 solid;
+}
+
+.upgradesBuildingTier {
+    border: 1px #999 solid;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.upgradesBuilding ul ul {
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.upgradesBuilding li {
+    display: block;
 }
 
 @media only screen and (min-width: 900px) {

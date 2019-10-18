@@ -169,6 +169,6 @@ function onWindowResize() {
         renderer.setSize(window.innerWidth - 90, window.innerHeight - 144);
 }
 
-window.addEventListener('resize', onWindowResize, false);
+window.addEventListener('resize', onWindowResize);
 
 export { Graphics };
